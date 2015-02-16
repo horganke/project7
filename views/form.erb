@@ -11,16 +11,19 @@
     <div class = "container">
       <div class = "row">
         <div class="col-md-12">
-          <h1>Here are your holidays!</h1>
-          <% if @holidays.length < 1 %>
-            <p>No Holidays on this date</p>
+          <h1>Holiday Form</h1>
 
-          <% end %>
+          <form action="holidays">
+            Year (Ex: 2015): <input name="year" type="number">
+            <p></p>
+            Month (Ex: 2): <input name="month" type="number">
+            <p></p>
+            Day (Ex: 14): <input name="day" type="number">
+            <p></p>
+            <button type="submit">Submit</button>
+          </form>
 
-          <% @holidays.each do |date| %>
-              <p><%= date['name'] %> : <%= date['date'] %></p><br>
-          <% end %>
-      </div>
+        </div>
     </div>
   </body>
 </html>

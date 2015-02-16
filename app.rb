@@ -1,12 +1,14 @@
-# app.rb
 require 'sinatra'
 require 'holidapi'
 
 class MyWebApp < Sinatra::Base
   get '/' do
-    @holidays = HolidApi.get
-    @holidays_current = HolidApi.get(month: (Date.today.strftime('%m')))
-    @holidays_birth = HolidApi.get(year:1993,month:10,country: 'us')
+    erb :form
+  end
+  get '/holidays' do
+    @holidays = HolidApi.get(day: params['day'], month: params['month'], year: params['year'])
+    puts params
+    puts @holidays
     erb :index
   end
 end
