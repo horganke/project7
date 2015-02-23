@@ -11,15 +11,35 @@
     <div class = "container">
       <div class = "row">
         <div class="col-md-12">
-          <h1>Here are your holidays!</h1>
-          <% if @holidays.length < 1 %>
-            <p>No Holidays on this date</p>
+          
+          <h3>Here are your holidays for that date </h3>
+          
+          <% if params['year'] != nil && params['year'] != "" %>
 
-          <% end %>
+            <% if params['month'] != nil && params['month'] != "" %>
 
-          <% @holidays.each do |date| %>
-              <p><%= date['name'] %> : <%= date['date'] %></p><br>
-          <% end %>
+              <% if @holidays.length < 1 %>
+                <p>No Holidays on this date</p>
+
+              <% end %>
+
+              <% @holidays.each do |date| %>
+                  <p><%= date['name'] %> : <%= date['date'] %></p><br>
+              <% end %>
+
+            <%else%>
+
+              <p> please enter a month </p>
+
+            <%end%>
+
+          <% else %>
+
+            <p>Please enter a year </p>
+
+          <%end%>
+
+        </div>
       </div>
     </div>
   </body>
